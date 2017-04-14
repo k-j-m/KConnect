@@ -21,14 +21,24 @@ class SeedGerminator(object):
 
 class GenericSubsys(object):
 
-    def __init__(self, seed_dispenser, input_ports=None):
+    def __init__(self, seed_dispenser, accessor, input_ports=None, output_ports=None):
         if input_ports is None:
             input_ports = []
+        if output_ports is None:
+            output_ports = []
+
         self._seed_dispenser = seed_dispenser
         self._input_ports = {}
+        self._output_ports = {}
+        self._accessor = accessor
+
         for ip in input_ports:
             assert ip.name not in self._input_ports
             self._input_ports[ip.name] = ip
+
+        for op in output_ports:
+            assert op.name not in self._output_ports
+            self._output_ports[op.name] = op
 
     def get_seed(self, nm):
         seed = self._seed_dispenser.get_seed(nm)
@@ -40,6 +50,19 @@ class GenericSubsys(object):
 
     def get_input_port(self, nm):
         return self._input_ports[nm]
+
+    def get(self, nm, datastore):
+        data = self._accessor(datastore)
+        return self._output_ports[nm](data)
+
+    def list_output_ports(self):
+        return self._output_ports.keys()
+
+    def list_input_ports(self):
+        return self._input_ports.keys()
+
+    def get_output_port(self, nm):
+        return self._output_ports[nm]
 
 
 class OutputPort(object):

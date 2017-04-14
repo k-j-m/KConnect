@@ -30,13 +30,14 @@ class TestExamples(unittest.TestCase):
         for i in range(10):
             perf_seed = perf.get_seed('lalal')
             if i > 0:
-                ipc_eta = datastore['ipc'][-1]['result'].get_json()['eta']
+                data_item = datastore['ipc'][-1]
+                ipc_eta = ipc.get('get_perf_bid', data_item)
                 perf_seed.apply('set_ipc_bid', ipc_eta)
 
             dc_perf = datastore['perf'].add_new()
             perf_seed.run(dc_perf)
 
-            ipc_perf_data = perf.get(datastore['perf'][-1], 'get_ipc_data')
+            ipc_perf_data = perf.get('get_ipc_data', datastore['perf'][-1])
             ipc_seed = ipc.get_seed('asdf')
             ipc_seed.apply('set_perf_data', ipc_perf_data)
             dc_ipc = datastore['ipc'].add_new()
@@ -75,9 +76,12 @@ class ModelTests(unittest.TestCase):
 
     def test_output_port(self):
         port = ex.PerfModel().get_output_port('get_ipc_data')
-        data = {'IPC_PR': 4.5, 'FLOW': 1.0}
+        d = {'IPC_PR': 4.5, 'FLOW': 1.0}
+        class Accessor(object):
+            ipc_data = ex.CompressorPerfInputs(pr=d['IPC_PR'], flow=d['FLOW'])
+
         expected = 4.5
-        returned = port(data).pr
+        returned = port(Accessor()).pr
         self.assertEquals(expected, returned)
 
     def test_input_port(self):
@@ -156,7 +160,8 @@ class TestDataStore(unittest.TestCase):
 
     def test_dataitem_json(self):
         """
-        JSON is a common use case. Let's support it as a convenience early on.
+        JSON is a common use case. Let's support it from the start as a 
+        productivity-boosting convenience.
         """
         exp_data = {'foo':'bar'}
         dc = mdl.DataContainer()

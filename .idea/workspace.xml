@@ -2,18 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0001d1ab-151d-426d-bfdf-0534be296d7f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/KConnect.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kconnect/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kconnect/examples.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kconnect/model.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kconnect/test/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kconnect/test/test_model.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kconnect/examples.py" afterPath="$PROJECT_DIR$/kconnect/examples.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kconnect/model.py" afterPath="$PROJECT_DIR$/kconnect/model.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kconnect/test/test_model.py" afterPath="$PROJECT_DIR$/kconnect/test/test_model.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,8 +22,8 @@
           <file leaf-file-name="model.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/kconnect/model.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="181">
-                  <caret line="14" column="24" lean-forward="false" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+                <state relative-caret-position="-1404">
+                  <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
                   <folding>
                     <element signature="e#65#100#0" expanded="true" />
                   </folding>
@@ -42,8 +34,8 @@
           <file leaf-file-name="examples.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/kconnect/examples.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="360">
-                  <caret line="86" column="0" lean-forward="true" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+                <state relative-caret-position="2916">
+                  <caret line="162" column="0" lean-forward="true" selection-start-line="162" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
                   <folding>
                     <element signature="e#0#70#0" expanded="true" />
                   </folding>
@@ -58,7 +50,7 @@
           <file leaf-file-name="test_model.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/kconnect/test/test_model.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-2529">
+                <state relative-caret-position="72">
                   <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
                   <folding>
                     <element signature="e#0#15#0" expanded="true" />
@@ -93,8 +85,8 @@
         <option value="$PROJECT_DIR$/test/__init__.py" />
         <option value="$PROJECT_DIR$/test/kconnect/test_model.py" />
         <option value="$PROJECT_DIR$/kconnect/test/test_model.py" />
-        <option value="$PROJECT_DIR$/kconnect/examples.py" />
         <option value="$PROJECT_DIR$/kconnect/model.py" />
+        <option value="$PROJECT_DIR$/kconnect/examples.py" />
       </list>
     </option>
   </component>
@@ -185,21 +177,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Python tests.Unittests in test_model.py">
-    <configuration default="false" name="Unittests for kconnect.test.test_model.TestExamples.test_hpc_eta" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="KConnect" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;kconnect.test.test_model.TestExamples.test_hpc_eta&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method />
-    </configuration>
     <configuration default="false" name="Unittests for kconnect.test.test_model.TestExamples.test_perf_and_ipc" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -245,7 +222,7 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method />
     </configuration>
-    <configuration default="false" name="Unittests for kconnect.test.test_model.TestExamples" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="Unittests for kconnect.test.test_model.ModelTests.test_list_ports" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs />
@@ -256,7 +233,22 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="KConnect" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;kconnect.test.test_model.TestExamples&quot;" />
+      <option name="_new_target" value="&quot;kconnect.test.test_model.ModelTests.test_list_ports&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittests for kconnect.test.test_model.ModelTests.test_output_port" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="KConnect" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;kconnect.test.test_model.ModelTests.test_output_port&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method />
     </configuration>
@@ -325,19 +317,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests for kconnect.test.test_model.TestExamples.test_hpc_eta" />
-      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for kconnect.test.test_model.TestExamples.test_perf_and_ipc" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in test_model.py" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for kconnect.test.test_model.TestExamples.test_ipc_eta" />
-      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for kconnect.test.test_model.TestExamples" />
+      <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests for kconnect.test.test_model.TestExamples.test_perf_and_ipc" />
+      <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in test_model.py" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for kconnect.test.test_model.TestExamples.test_ipc_eta" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for kconnect.test.test_model.ModelTests.test_list_ports" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for kconnect.test.test_model.ModelTests.test_output_port" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in test_model.py" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for kconnect.test.test_model.TestExamples.test_ipc_eta" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for kconnect.test.test_model.TestExamples" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for kconnect.test.test_model.TestExamples.test_perf_and_ipc" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for kconnect.test.test_model.TestExamples.test_hpc_eta" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests for kconnect.test.test_model.TestExamples.test_perf_and_ipc" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests for kconnect.test.test_model.ModelTests.test_output_port" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests for kconnect.test.test_model.ModelTests.test_list_ports" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for kconnect.test.test_model.TestExamples.test_ipc_eta" />
       </list>
     </recent_temporary>
   </component>
@@ -352,44 +344,52 @@
       <option name="presentableId" value="Default" />
       <updated>1492160928436</updated>
     </task>
+    <task id="LOCAL-00001" summary="First commit. Self-sustaining iteration between two cyclically dependent subsystems.">
+      <created>1492205996357</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1492205996357</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_for_kconnect_test_test_model_TestExamples - 2017.04.14 at 22h 14m 16s.xml">
-      <configuration name="Unittests for kconnect.test.test_model.TestExamples" configurationId="tests" />
+    <history-entry file="Unittests_for_kconnect_test_test_model_ModelTests_test_list_ports - 2017.04.14 at 23h 20m 52s.xml">
+      <configuration name="Unittests for kconnect.test.test_model.ModelTests.test_list_ports" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_kconnect_test_test_model_TestExamples_test_ipc_eta - 2017.04.14 at 22h 08m 45s.xml">
-      <configuration name="Unittests for kconnect.test.test_model.TestExamples.test_ipc_eta" configurationId="tests" />
+    <history-entry file="Unittests_for_kconnect_test_test_model_ModelTests_test_output_port - 2017.04.14 at 23h 26m 27s.xml">
+      <configuration name="Unittests for kconnect.test.test_model.ModelTests.test_output_port" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_kconnect_test_test_model_TestExamples_test_ipc_eta - 2017.04.14 at 22h 14m 37s.xml">
-      <configuration name="Unittests for kconnect.test.test_model.TestExamples.test_ipc_eta" configurationId="tests" />
+    <history-entry file="Unittests_for_kconnect_test_test_model_TestExamples_test_perf_and_ipc - 2017.04.14 at 23h 06m 08s.xml">
+      <configuration name="Unittests for kconnect.test.test_model.TestExamples.test_perf_and_ipc" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_kconnect_test_test_model_TestExamples_test_ipc_eta - 2017.04.14 at 22h 17m 38s.xml">
-      <configuration name="Unittests for kconnect.test.test_model.TestExamples.test_ipc_eta" configurationId="tests" />
+    <history-entry file="Unittests_for_kconnect_test_test_model_TestExamples_test_perf_and_ipc - 2017.04.14 at 23h 07m 22s.xml">
+      <configuration name="Unittests for kconnect.test.test_model.TestExamples.test_perf_and_ipc" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_kconnect_test_test_model_TestExamples_test_ipc_eta - 2017.04.14 at 22h 24m 48s.xml">
-      <configuration name="Unittests for kconnect.test.test_model.TestExamples.test_ipc_eta" configurationId="tests" />
+    <history-entry file="Unittests_for_kconnect_test_test_model_TestExamples_test_perf_and_ipc - 2017.04.14 at 23h 27m 37s.xml">
+      <configuration name="Unittests for kconnect.test.test_model.TestExamples.test_perf_and_ipc" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_kconnect_test_test_model_TestExamples_test_ipc_eta - 2017.04.14 at 22h 25m 12s.xml">
-      <configuration name="Unittests for kconnect.test.test_model.TestExamples.test_ipc_eta" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_kconnect_test_test_model_TestExamples_test_ipc_eta - 2017.04.14 at 22h 27m 23s.xml">
-      <configuration name="Unittests for kconnect.test.test_model.TestExamples.test_ipc_eta" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_kconnect_test_test_model_TestExamples_test_ipc_eta - 2017.04.14 at 22h 27m 51s.xml">
-      <configuration name="Unittests for kconnect.test.test_model.TestExamples.test_ipc_eta" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_model_py - 2017.04.14 at 22h 08m 49s.xml">
+    <history-entry file="Unittests_in_test_model_py - 2017.04.14 at 23h 20m 00s.xml">
       <configuration name="Unittests in test_model.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_model_py - 2017.04.14 at 22h 27m 57s.xml">
+    <history-entry file="Unittests_in_test_model_py - 2017.04.14 at 23h 20m 57s.xml">
+      <configuration name="Unittests in test_model.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_model_py - 2017.04.14 at 23h 21m 28s.xml">
+      <configuration name="Unittests in test_model.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_model_py - 2017.04.14 at 23h 26m 33s.xml">
+      <configuration name="Unittests in test_model.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_model_py - 2017.04.14 at 23h 27m 43s.xml">
       <configuration name="Unittests in test_model.py" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13908356" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13908356" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3299285" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -451,9 +451,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/ide/ide-scripting.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/kconnect/test/test_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2529">
+        <state relative-caret-position="72">
           <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
@@ -463,26 +471,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/kconnect/model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="14" column="24" lean-forward="false" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+        <state relative-caret-position="-1404">
+          <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
           <folding>
             <element signature="e#65#100#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/ide/ide-scripting.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/kconnect/examples.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="86" column="0" lean-forward="true" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+        <state relative-caret-position="2916">
+          <caret line="162" column="0" lean-forward="true" selection-start-line="162" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
           <folding>
             <element signature="e#0#70#0" expanded="true" />
           </folding>

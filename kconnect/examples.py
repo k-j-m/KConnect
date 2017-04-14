@@ -19,6 +19,14 @@ def set_cmp_perf(obj, data):
     obj._inputs = data
 
 
+def set_perf_ipc_bid(obj, data):
+    obj.data['IPC_ETA'] = data
+
+
+def set_perf_hpc_bid(obj, data):
+    obj.data['HPC_ETA'] = data
+
+
 #### Subsystem-specific components ####
 
 class CmpSeedDispenser(object):
@@ -27,9 +35,19 @@ class CmpSeedDispenser(object):
         return CompressorSeed()
 
 
+class CmpAccessor(object):
+    def __init__(self, datastore):
+        self._datastore = datastore
+
+    @property
+    def eta(self):
+        return self._datastore['result'].get_json()['eta']
+
+
 def CompIPC():
     return GenericSubsys(
         seed_dispenser=CmpSeedDispenser(),
+        accessor=CmpAccessor,
         input_ports=[
             InputPort(
                 name='set_perf_data',
@@ -42,6 +60,14 @@ def CompIPC():
                 description='Duct radius that this compressor needs to mate on to',
                 type=DuctInputs,
                 fn=lambda obj, data: None
+            )
+        ],
+        output_ports=[
+            OutputPort(
+                name='get_perf_bid',
+                description='Get this compressor\'s performance bid to pass back to the perf model.',
+                type=float,
+                fn=lambda d: d.eta
             )
         ]
     )
@@ -66,46 +92,60 @@ class CompressorSeed(object):
 class Corrections(object): ...
 
 
-
-class PerfModel(object):
-
-    def __init__(self):
-        self._output_ports = {}
-        self._output_ports['get_ipc_data'] = OutputPort(
-            name='get_ipc_data',
-            description='Performance inputs to the IPC',
-            type=CompressorPerfInputs,
-            fn=lambda d: CompressorPerfInputs(pr=d['IPC_PR'], flow=d['FLOW'])
-        )
-        self._output_ports['get_hpc_data'] = OutputPort(
-            name='get_hpc_data',
-            description='Performance inputs to the HPC',
-            type=CompressorPerfInputs,
-            fn=lambda d: CompressorPerfInputs(pr=d['HPC_PR'], flow=d['FLOW'])
-        )
-
-
-
-    def list_output_ports(self):
-        return ['get_ipc_data', 'get_hpc_data']
-
-    def list_input_ports(self):
-        return ['set_ipc_bid', 'set_hpc_bid']
-
-    def get_output_port(self, nm):
-        return self._output_ports[nm]
-
+class PerfSeedDispenser(object):
     def get_seed(self, nm):
         return PerfSeed()
 
-    def get(self, datastore, nm):
-        data = datastore['result'].get_json()
-        if nm == 'get_ipc_data':
-            return CompressorPerfInputs(pr=data['IPC_PR'], flow=data['FLOW'])
-        elif nm == 'get_hpc_data':
-            return CompressorPerfInputs(pr=data['HPC_PR'], flow=data['FLOW'])
-        else:
-            raise Exception
+
+class PerfAccessor(object):
+    def __init__(self, datastore=None):
+        self._datastore = datastore
+        self.data = datastore['result'].get_json()
+
+    @property
+    def hpc_data(self):
+        d = self.data
+        return CompressorPerfInputs(pr=d['HPC_PR'], flow=d['FLOW'])
+
+    @property
+    def ipc_data(self):
+        d = self.data
+        return CompressorPerfInputs(pr=d['IPC_PR'], flow=d['FLOW'])
+
+
+def PerfModel():
+    return GenericSubsys(
+        seed_dispenser=PerfSeedDispenser(),
+        accessor=PerfAccessor,
+        input_ports=[
+            InputPort(
+                name='set_ipc_bid',
+                description='Set IPC performance bid',
+                type=float,
+                fn=set_perf_ipc_bid
+            ),
+            InputPort(
+                name='set_hpc_bid',
+                description='Set HPC performance bid',
+                type=float,
+                fn=set_perf_hpc_bid
+            )
+        ],
+        output_ports=[
+            OutputPort(
+                name='get_ipc_data',
+                description='Performance inputs to the IPC',
+                type=CompressorPerfInputs,
+                fn=lambda d: d.ipc_data
+            ),
+            OutputPort(
+                name='get_hpc_data',
+                description='Performance inputs to the HPC',
+                type=CompressorPerfInputs,
+                fn=lambda d: d.hpc_data
+            )
+        ]
+    )
 
 
 class PerfSeed(object):
@@ -120,14 +160,6 @@ class PerfSeed(object):
             'IPC_PR': 10.0,
             'FLOW': flow
         })
-
-    def apply(self, nm, data):
-        if nm == 'set_ipc_bid':
-            self.data['IPC_ETA'] = data
-        elif nm == 'set_hpc_bid':
-            self.data['HPC_ETA'] = data
-        else:
-            raise Exception
 
 
 def build_model():
