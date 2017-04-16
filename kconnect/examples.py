@@ -31,7 +31,7 @@ def set_perf_hpc_bid(obj, data):
 
 class CmpSeedDispenser(object):
 
-    def get_seed(self, nm):
+    def get_seed(self, nm: object) -> object:
         return CompressorSeed()
 
 
@@ -86,14 +86,14 @@ class CompressorSeed(object):
         eta_max = 0.95
         tau = 2.
         eta = eta_min + (eta_max - eta_min)*(1 - math.exp(-tau * flow))
-        datastore['result'].put_json({'eta': eta})
+        datastore['result'].put_json({'eta': eta, 'flow': flow})
 
 
 class Corrections(object): ...
 
 
 class PerfSeedDispenser(object):
-    def get_seed(self, nm):
+    def get_seed(self, nm: str):
         return PerfSeed()
 
 
@@ -169,7 +169,7 @@ def build_model():
     model.add_subsystem('EngineCycle', PerfModel())
     model.add_subsystem('IPC', CompIPC())
     model.add_subsystem('HPC', CompHPC())
-    model.add_subsystem('Corrections', Corrections())
+    #model.add_subsystem('Corrections', Corrections())
 
     # Node connectivity (data flows)
     model.connect(src='EngineCycle.get_ipc_data', dst='IPC.set_perf_data')
@@ -179,8 +179,9 @@ def build_model():
 
     return model
 
+
 def execute(model, datastore):
-    model.run('Corrections', datastore)
+    #model.run('Corrections', datastore)
 
     converged = False
     while not converged:

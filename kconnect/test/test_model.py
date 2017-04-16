@@ -1,4 +1,5 @@
 import unittest
+from collections import defaultdict
 
 import kconnect.model as mdl
 import kconnect.examples as ex
@@ -95,6 +96,90 @@ class ModelTests(unittest.TestCase):
         in_port2 = ex.CompIPC().get_input_port('set_duct_rads')
         self.assertRaises(mdl.IncompatiblePorts, mdl.verify_port_compatibility, out_port, in_port2)
 
+    def test_bad_port_connection(self):
+        """
+        Make a bad port connection and make sure that a suitable error is raised
+        """
+        model = mdl.Model()
+        model.add_subsystem('EngineCycle', ex.PerfModel())
+        model.add_subsystem('IPC', ex.CompIPC())
+
+        # good connection
+        model.connect(src='EngineCycle.get_ipc_data', dst='IPC.set_perf_data')
+
+        # typos in subsys name
+        self.assertRaises(AttributeError, model.connect, src='EngineCycleZ.get_ipc_data', dst='IPC.set_perf_data')
+        self.assertRaises(AttributeError, model.connect, src='EngineCycle.get_ipc_data', dst='IPCZ.set_perf_data')
+
+        # typos in port name
+        self.assertRaises(AttributeError, model.connect, src='EngineCycle.get_ipc_dataZ', dst='IPC.set_perf_data')
+        self.assertRaises(AttributeError, model.connect, src='EngineCycle.get_ipc_data', dst='IPC.set_perf_dataZ')
+
+    def test_simple_model_execution(self):
+        """
+        Run a simple model and check that we can look at some results
+        """
+        model = mdl.Model()
+        model.add_subsystem('EngineCycle', ex.PerfModel())
+        runnable_model = model.configure({'EngineCycle': 'lalala'})
+        datastore = mdl.DataStore()
+        runnable_model.run('EngineCycle', datastore)
+        self.assertTrue('EngineCycle' in datastore)
+        ditem = datastore['EngineCycle'][-1]
+        perf_data = ex.PerfAccessor(ditem)
+        print(perf_data.data)
+        #result = model.get_data_obj('EngineCycle', datastore)
+
+    def test_coupled_model_execution(self):
+        """
+        Run a model with one node connected to another
+        """
+        model = mdl.Model()
+        model.add_subsystem('EngineCycle', ex.PerfModel())
+        model.add_subsystem('IPC', ex.CompIPC())
+        # good connection
+        model.connect(src='EngineCycle.get_ipc_data', dst='IPC.set_perf_data')
+        runnable_model = model.configure(defaultdict(lambda: 'asdf'))
+        datastore = mdl.DataStore()
+        runnable_model.run('EngineCycle', datastore)
+        runnable_model.run('IPC', datastore)
+
+        print(datastore)
+        print(datastore['EngineCycle'][-1]['result'].read())
+        print(datastore['IPC'][-1]['result'].read())
+        # perf_data = ex.PerfAccessor(datastore['EngineCycle'][-1]).data
+        # print(perf_data)
+        # perf_flow = perf_data['FLOW']
+        # cmpr_flow = ex.CmpAccessor(datastore['IPC'][-1]['result'].get_json()['flow'])
+        # self.assertEquals(perf_flow, cmpr_flow)
+
+    def test_cyclic_model_execution(self):
+        """
+        Set up a simple model with a cyclic data dependency and get the thing to run
+        """
+        model = mdl.Model()
+        model.add_subsystem('EngineCycle', ex.PerfModel())
+        model.add_subsystem('IPC', ex.CompIPC())
+        model.connect(src='EngineCycle.get_ipc_data', dst='IPC.set_perf_data')
+        model.connect(src='IPC.get_perf_bid', dst='EngineCycle.set_ipc_bid')
+        runnable_model = model.configure(defaultdict(lambda: 'asdf'))
+        datastore = mdl.DataStore()
+        history = []
+        for _ in range(5):
+            runnable_model.run('EngineCycle', datastore)
+            runnable_model.run('IPC', datastore)
+            d = model.get(datastore, 'EngineCycle', 'get_ipc_data')
+            if history:
+                self.assertTrue(d is not history[-1])
+            history.append(d)
+            print(d.flow)
+
+    def test_full_model(self):
+        model = ex.build_model()
+        runnable_model = model.configure(defaultdict(lambda: 'asdf'))
+        datastore = mdl.DataStore()
+        ex.execute(runnable_model, datastore)
+
 
 class TestDataStore(unittest.TestCase):
     """
@@ -114,11 +199,25 @@ class TestDataStore(unittest.TestCase):
         s_ret = dstore['ASDF'][0]['item'].read()
         self.assertEquals(s_ret, s_exp)
 
+    def test_contains(self):
+        dstore = mdl.DataStore()
+        dstack = dstore['ASDF']
+        self.assertTrue('ASDF' in dstore)
+
     def test_datastack(self):
         """
         Add a new container on to a clean datastack
         """
         dstack = mdl.DataStack()
+
+    def test_datastack_implicit_false(self):
+        """
+        Check that a datastack's implicit false __nonzero__ method works
+        """
+        dstack = mdl.DataStack()
+        self.assertFalse(dstack)
+        dstack.add_new()
+        self.assertTrue(dstack)
 
     def test_data_container_single_item(self):
         """
